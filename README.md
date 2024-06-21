@@ -2,7 +2,11 @@
 shadcn-ui
 
 ### Icon
+react lucide
 
+### animation
+framer-motion
 
-### prisma
+### DB ORM
+prisma
 npx prisma init
