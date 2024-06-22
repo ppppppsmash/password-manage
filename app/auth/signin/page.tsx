@@ -1,18 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { AnimatePresence, motion } from "framer-motion";
+import { CanvasRevealEffect } from "@/components/effective-ui/canvas-reveal-effect";
+
 import {
   Tabs,
   TabsContent,
@@ -22,24 +14,50 @@ import {
 
 import { SignInForm } from "./_components/signin-form"
 import { SignUpForm } from "./_components/signup-form"
-import { EvervaultCard } from "@/components/effective-ui/evervault-card"
 
-export default function SignInPage() {
+export default function SignPage() {
+  const [hovered, setHovered] = React.useState(false);
 
   return (
-    <section className="container h-screen flex justify-center items-center bg-transparent relative">
-      <Tabs defaultValue="account" className="w-[400px]">
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="account">Sign In</TabsTrigger>
-          <TabsTrigger value="password">Sign Up</TabsTrigger>
-        </TabsList>
-        <TabsContent value="account">
-          <SignInForm />
-        </TabsContent>
-        <TabsContent value="password">
-          <SignUpForm />
-        </TabsContent>
-      </Tabs>
+    <section
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="container h-screen flex justify-center items-center bg-transparent relative">
+      
+        <Tabs defaultValue="account" className="w-[400px] z-50">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="account">Sign In</TabsTrigger>
+            <TabsTrigger value="password">Sign Up</TabsTrigger>
+          </TabsList>
+          <TabsContent value="account">
+            <SignInForm />
+          </TabsContent>
+          <TabsContent value="password">
+            <SignUpForm />
+          </TabsContent>
+        </Tabs>
+        <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="h-full w-full absolute inset-0 z-10"
+          >
+            <CanvasRevealEffect
+              animationSpeed={5}
+              containerClassName="bg-transparent"
+              colors={[
+                [59, 130, 246],
+                [139, 92, 246],
+              ]}
+              opacities={[0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.4, 1]}
+              dotSize={2}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+      {/* Radial gradient for the cute fade */}
     </section>
   )
 }
