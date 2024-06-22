@@ -1,3 +1,7 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -18,24 +22,22 @@ import {
 
 import { SignInForm } from "./_components/signin-form"
 import { SignUpForm } from "./_components/signup-form"
+import { EvervaultCard } from "@/components/effective-ui/evervault-card"
 
 export default function SignInPage() {
+
   return (
-    <section className="container h-screen flex justify-center items-center">
+    <section className="container h-screen flex justify-center items-center bg-transparent relative">
       <Tabs defaultValue="account" className="w-[400px]">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="account">Sign In</TabsTrigger>
           <TabsTrigger value="password">Sign Up</TabsTrigger>
         </TabsList>
         <TabsContent value="account">
-          <Card>
-            <SignInForm />
-          </Card>
+          <SignInForm />
         </TabsContent>
         <TabsContent value="password">
-          <Card>
-            <SignUpForm />
-          </Card>
+          <SignUpForm />
         </TabsContent>
       </Tabs>
     </section>
