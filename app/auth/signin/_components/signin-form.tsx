@@ -15,12 +15,9 @@ export function SignInForm() {
     console.log("Form submitted");
   };
   return (
-    <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
-      <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
-        Password Manager
-      </h2>
+    <div className="max-w-lg w-full mx-auto rounded-none p-4 md:p-8 bg-white dark:bg-neutral-950">
       <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
-        Welcome to Kurosawa's World
+        Welcome to Kurosawa's Password Manager
       </p>
 
       <form className="my-8" onSubmit={handleSubmit}>
