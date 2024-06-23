@@ -1,5 +1,5 @@
 import React from 'react'
-import { BackgroundBeams } from '../../../components/effective-ui/background-beams'
+import { BackgroundBeams } from '../../components/effective-ui/background-beams'
 
 interface SignInLayout {
   children: React.ReactNode
